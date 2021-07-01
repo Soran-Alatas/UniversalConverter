@@ -2,4 +2,21 @@
     <string name="app_name">Universal Converter</string>
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
+    <string name="value_here">A value should either be entered or appear here</string>
+    <string-array name="length_units">
+        <item>km</item>
+        <item>m</item>
+        <item>dm</item>
+        <item>cm</item>
+        <item>mm</item>
+        <item>mile</item>
+        <item>nautical mile</item>
+        <item>foot</item>
+        <item>yard</item>
+        <item>inch</item>
+        <item>light year</item>
+        <item>astronomical unit</item>
+        <item>parsec</item>
+    </string-array>
+
 </resources>
