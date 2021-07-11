@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+
 import java.math.BigDecimal;
 
 public class Length extends AppCompatActivity {
@@ -20,6 +23,7 @@ public class Length extends AppCompatActivity {
         setContentView(R.layout.activity_length);
         Intent intent = getIntent();
 
+        Button convertButton = (Button) findViewById(R.id.convertButton);
         Spinner spinner1 = (Spinner) findViewById(R.id.spinner1);
         Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
 
@@ -31,10 +35,11 @@ public class Length extends AppCompatActivity {
         // Apply the adapter to the spinner
         spinner1.setAdapter(adapter);
         spinner2.setAdapter(adapter);
-        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+        convertButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 onItemSelected++;
-                if (onItemSelected >= 2) {
+                if (onItemSelected >= 1) {
                     // An item was selected. You can retrieve the selected item using
                     // parent.getItemAtPosition(pos)
                     EditText text1 = (EditText) findViewById(R.id.editTextNumberDecimal1);
@@ -43,25 +48,11 @@ public class Length extends AppCompatActivity {
                         String unitSelected = spinner1.getSelectedItem().toString();
                         String otherUnit = spinner2.getSelectedItem().toString();
                         double result = process(value1, unitSelected, otherUnit);
-                        EditText text2 = (EditText) findViewById(R.id.editTextNumberDecimal2);
-                        text2.setText(String.valueOf(result));
+                        TextView text2 = (TextView) findViewById(R.id.editTextNumberDecimal2);
+                        String resultText = String.valueOf(result).substring(0,10) + " " + otherUnit + ".";
+                        text2.setText(resultText);
                     }
                 }
-            }
-
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Another interface callback
-            }
-        });
-        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                // An item was selected. You can retrieve the selected item using
-                // parent.getItemAtPosition(pos)
-                onItemSelected++;
-                }
-
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Another interface callback
             }
         });
     }

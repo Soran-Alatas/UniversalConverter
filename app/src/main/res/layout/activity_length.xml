@@ -7,34 +7,33 @@
     tools:context=".Length">
 
     <EditText
-        android:hint="@string/value_here"
-        android:autofillHints="first value"
         android:id="@+id/editTextNumberDecimal1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="32dp"
+        android:autofillHints="first value"
         android:ems="10"
+        android:hint="@string/value_here"
         android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <EditText
-        android:hint="@string/value_here"
-        android:autofillHints="second value"
+    <TextView
         android:id="@+id/editTextNumberDecimal2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_width="377dp"
+        android:layout_height="59dp"
         android:layout_marginTop="32dp"
+        android:autofillHints="second value"
         android:ems="10"
-        android:inputType="numberDecimal"
+        android:hint="@string/value_here"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal1" />
-
+        app:layout_constraintTop_toBottomOf="@+id/convertButton" />
     <RelativeLayout
         android:id="@+id/relativeLayout1"
         android:layout_width="106dp"
@@ -64,9 +63,8 @@
         android:background="#FFFFFF"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.55"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumberDecimal2"
-        app:layout_constraintTop_toTopOf="@+id/editTextNumberDecimal2">
+        app:layout_constraintStart_toEndOf="@+id/convertButton"
+        app:layout_constraintTop_toTopOf="@+id/convertButton">
 
         <Spinner
             android:id="@+id/spinner2"
@@ -74,6 +72,17 @@
             android:layout_width="match_parent"
             android:layout_height="42dp" />
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/convertButton"
+        android:layout_width="212dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Convert into"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
