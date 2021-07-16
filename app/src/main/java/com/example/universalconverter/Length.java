@@ -5,14 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 public class Length extends AppCompatActivity {
 
@@ -38,18 +38,30 @@ public class Length extends AppCompatActivity {
         convertButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //this is because, for some reasons, the buttons gets clicked once when the page is opened. So we do this to avoid
+                //actually clicking on the button when we open the page
                 onItemSelected++;
                 if (onItemSelected >= 1) {
                     // An item was selected. You can retrieve the selected item using
                     // parent.getItemAtPosition(pos)
                     EditText text1 = (EditText) findViewById(R.id.editTextNumberDecimal1);
-                    if (!text1.getText().toString().equals("")) {
+                    if (!text1.getText().toString().equals("")) { //if it's not empty
                         double value1 = Double.parseDouble(text1.getText().toString());
                         String unitSelected = spinner1.getSelectedItem().toString();
                         String otherUnit = spinner2.getSelectedItem().toString();
-                        double result = process(value1, unitSelected, otherUnit);
+                        double result = process(value1, unitSelected, otherUnit); //we call the process with the value entered and the format of in and out
+                        String resultText;
+                        if(String.valueOf(result).length() > 10) {
+                            NumberFormat formatter = new DecimalFormat("0.######E0"); //this is used to format the text as wanted if too long
+                            resultText = formatter.format(result) + " " + otherUnit + ".";
+                        }
+                        else{
+                            resultText = result + " " + otherUnit + ".";
+                        }
+
                         TextView text2 = (TextView) findViewById(R.id.editTextNumberDecimal2);
-                        String resultText = String.valueOf(result).substring(0,10) + " " + otherUnit + ".";
+
+
                         text2.setText(resultText);
                     }
                 }

@@ -2,7 +2,7 @@
     <string name="app_name">Universal Converter</string>
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
-    <string name="value_here">A value should either be entered or appear here</string>
+    <string name="value_here">Enter your value</string>
     <string-array name="length_units">
         <item>km</item>
         <item>m</item>
