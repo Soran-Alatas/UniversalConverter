@@ -18,5 +18,17 @@
         <item>astronomical unit</item>
         <item>parsec</item>
     </string-array>
+    <string-array name="weight_units">
+        <item>kg</item>
+        <item>g</item>
+        <item>mg</item>
+        <item>Pounds</item>
+        <item>Ounces</item>
+        <item>Stones</item>
+        <item>Tons</item>
+        <item></item>
+        <item></item>
+        <item></item>
+    </string-array>
 
 </resources>
