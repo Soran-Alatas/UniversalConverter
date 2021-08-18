@@ -30,5 +30,18 @@
         <item></item>
         <item></item>
     </string-array>
+    <string-array name = "volume_units">
+        <item>m³</item>
+        <item>cm³</item>
+        <item>dm³</item>
+        <item>km³</item>
+        <item>mm³</item>
+        <item>liter</item>
+        <item>dl</item>
+        <item>cl</item>
+        <item>pint</item>
+        <item>galon(us)</item>
+        <item>galon(uk)</item>
+    </string-array>
 
 </resources>

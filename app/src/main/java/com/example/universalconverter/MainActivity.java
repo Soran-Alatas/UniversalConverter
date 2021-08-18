@@ -30,6 +30,11 @@ public static final String EXTRA_MESSAGE = "com.example.universalconverter.MESSA
         //intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
+
+    public void gotoVolume(View view){
+        Intent intent = new Intent(this, Volume.class);
+        startActivity(intent);
+    }
     public void sendMessage(View view) {
         Intent intent = new Intent(this, DisplayMessageActivity.class);
         //EditText editText = (EditText) findViewById(R.id.editTextTextPersonName);

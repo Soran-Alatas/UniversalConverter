@@ -49,6 +49,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
+        android:onClick="gotoVolume"
         android:text="Volume"
         app:icon="@drawable/volume_icon"
         app:layout_constraintEnd_toEndOf="parent"

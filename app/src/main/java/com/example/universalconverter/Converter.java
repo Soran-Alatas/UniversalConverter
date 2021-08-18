@@ -40,11 +40,11 @@ public abstract class Converter extends AppCompatActivity {
                         R.array.weight_units, android.R.layout.simple_spinner_item);
                 myClass="Weight";
                 break;
-            case "class com.example.universalconverter.volume":
+            case "class com.example.universalconverter.Volume":
                 setContentView(R.layout.activity_volume);
                 // Create an ArrayAdapter using the string array and a default spinner layout
                 adapter = ArrayAdapter.createFromResource(this,
-                        R.array.weight_units, android.R.layout.simple_spinner_item);
+                        R.array.volume_units, android.R.layout.simple_spinner_item);
                 myClass="Volume";
                 break;
             case "class com.example.universalconverter.Temperature":
@@ -94,8 +94,8 @@ public abstract class Converter extends AppCompatActivity {
                             text2 = (TextView) findViewById(R.id.editTextWeight2);
                             break;
                         case "Volume":
-                            text1 = (EditText) findViewById(R.id.editTextWeight1);
-                            text2 = (TextView) findViewById(R.id.editTextWeight2);
+                            text1 = (EditText) findViewById(R.id.editTextVolume1);
+                            text2 = (TextView) findViewById(R.id.editTextVolume2);
                             break;
                         case "Temperature":
                             text1 = (EditText) findViewById(R.id.editTextWeight1);
@@ -115,10 +115,10 @@ public abstract class Converter extends AppCompatActivity {
                                 result = process(value1, unitSelected, otherUnit, "weight");
                                 break;
                             case "Volume":
-                                result = process(value1, unitSelected, otherUnit, "weight");
+                                result = process(value1, unitSelected, otherUnit, "volume");
                                 break;
                             case "Temperature":
-                                result = process(value1, unitSelected, otherUnit, "weight");
+                                result = process(value1, unitSelected, otherUnit, "temperature");
                                 break;
                         }
                         String resultText;
@@ -138,6 +138,7 @@ public abstract class Converter extends AppCompatActivity {
         });
     }
 
+    //function that actually converts the value
     protected double process(double enteredValue, String thisUnit, String otherUnit, String category) {
         switch (category) {
             case "length":
@@ -268,7 +269,70 @@ public abstract class Converter extends AppCompatActivity {
                         return 0;
                 }
             case "volume":
-                return 0;
+                double thisIntoMeterCube = 0;
+
+                switch(thisUnit) {
+                    case "m³" :
+                        thisIntoMeterCube = enteredValue;
+                        break;
+                    case "cm³":
+                        thisIntoMeterCube = enteredValue * 0.000001;
+                        break;
+                    case "dm³" :
+                        thisIntoMeterCube = enteredValue * 0.001;
+                        break;
+                    case "mm³" :
+                        thisIntoMeterCube = enteredValue * 0.000000001;
+                        break;
+                    case "km³" :
+                        thisIntoMeterCube = enteredValue * 1000000000;
+                        break;
+                    case "liter" :
+                        thisIntoMeterCube = enteredValue * 0.001;
+                        break;
+                    case "cl" :
+                        thisIntoMeterCube = enteredValue * 0.00001;
+                        break;
+                    case "dl" :
+                        thisIntoMeterCube = enteredValue * 0.0001;
+                        break;
+                    case "pint" : //uk
+                        thisIntoMeterCube = enteredValue * 0.00056826125;
+                        break;
+                    case "galon(us)" :
+                        thisIntoMeterCube = enteredValue * 0.003785411784;
+                        break;
+                    case "galon(uk)" :
+                        thisIntoMeterCube = enteredValue * 0.00454609;
+                        break;
+                }
+                switch (otherUnit) {
+                    case "m³":
+                        return thisIntoMeterCube;
+                    case "cm³":
+                        return thisIntoMeterCube * 1000000;
+                    case "dm³":
+                        return thisIntoMeterCube * 1000;
+                    case "mm³":
+                        return thisIntoMeterCube * 1000000000;
+                    case "km³":
+                        return thisIntoMeterCube * 0.000000001;
+                    case "liter":
+                        return thisIntoMeterCube * 1000;
+                    case "cl":
+                        return thisIntoMeterCube * 100000;
+                    case "dl":
+                        return thisIntoMeterCube * 10000;
+                    case "pint":
+                        return thisIntoMeterCube * 1759.7539863927;
+                    case "galon(us)":
+                        return thisIntoMeterCube * 264.17205235815;
+                    case "galon(uk)":
+                        return thisIntoMeterCube * 219.96924829909;
+                    default:
+                        System.out.println("you broke me");
+                        return 0;
+                }
             case "temperature":
                 return 0;
             default:
